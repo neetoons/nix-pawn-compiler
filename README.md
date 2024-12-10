@@ -8,4 +8,4 @@ environment.systemPackages = [
 ];
 ```
 
-Thanks [krovuxdev]https://github.com/krovuxdevhttps://github.com/krovuxdev) for help
+Thanks [krovuxdev](https://github.com/krovuxdevhttps://github.com/krovuxdev) for help
