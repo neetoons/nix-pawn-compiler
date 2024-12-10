@@ -7,3 +7,5 @@ environment.systemPackages = [
     (pkgs.callPackage ./nix-pawn-compiler/pawncc/default.nix {})
 ];
 ```
+
+Thanks [krovuxdev]https://github.com/krovuxdevhttps://github.com/krovuxdev) for help
