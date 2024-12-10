@@ -27,9 +27,6 @@ pkgs.stdenv.mkDerivation rec {
 
   configurePhase = ''
     cd source/compiler
-    # mkdir build # si descomentar quitara las advertencias amarillas
-    # cd build
-    # cmake .. ${pkgs.lib.concatStringsSep " " cmakeFlags} 
     cmake ${pkgs.lib.concatStringsSep " " cmakeFlags} 
   '';
 
