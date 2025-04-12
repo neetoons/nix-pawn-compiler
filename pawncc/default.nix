@@ -21,7 +21,6 @@ pkgs.stdenv.mkDerivation rec {
   ];
 
   nativeBuildInputs = with pkgs; [
-    pkg-config
     cmake
   ];
 
