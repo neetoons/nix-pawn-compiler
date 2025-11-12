@@ -12,6 +12,7 @@ pkgs.stdenv.mkDerivation rec {
   };
 
   cmakeFlags = [
+    "-DCMAKE_BUILD_TYPE=Release"
     "-DBUILD_TESTING=OFF"
     "-DCMAKE_INSTALL_PREFIX=$out"
     "-DCMAKE_POLICY_DEFAULT_CMP0025=NEW"
@@ -34,7 +35,9 @@ pkgs.stdenv.mkDerivation rec {
   fixupPhase = ''
     mkdir -p $out/bin $out/lib
     cp -r pawncc $out/bin/pawncc
+    cp -r pawndisasm $out/bin/pawndisasm
     cp -r libpawnc.so $out/lib/libpawnc.so
+    cp -r ../../include $out/bin
   '';
 
   doCheck = false;
