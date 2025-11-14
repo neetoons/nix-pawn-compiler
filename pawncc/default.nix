@@ -1,7 +1,7 @@
 {
   pkgs ? import <nixpkgs> { },
 }:
-pkgs.stdenv.mkDerivation rec {
+pkgs.multiStdenv.mkDerivation rec {
   pname = "pawncc";
   version = "3.10.10";
   src = pkgs.fetchFromGitHub {
@@ -13,11 +13,7 @@ pkgs.stdenv.mkDerivation rec {
 
   cmakeFlags = [
     "-DCMAKE_BUILD_TYPE=Release"
-    "-DBUILD_TESTING=OFF"
-    "-DCMAKE_INSTALL_PREFIX=$out"
-    "-DCMAKE_POLICY_DEFAULT_CMP0025=NEW"
-    "-Wno-dev"
-    "-DCMAKE_INSTALL_PREFIX="
+    "-DCMAKE_C_FLAGS=-m32"
     "-DCMAKE_SOURCE_DIR=source/compiler" 
   ];
 
@@ -33,11 +29,10 @@ pkgs.stdenv.mkDerivation rec {
   installPhase = "make";
 
   fixupPhase = ''
-    mkdir -p $out/bin $out/lib
-    cp -r pawncc $out/bin/pawncc
-    cp -r pawndisasm $out/bin/pawndisasm
-    cp -r libpawnc.so $out/lib/libpawnc.so
-    cp -r ../../include $out/bin
+    mkdir -p $out/bin $out/lib $out/include
+    cp pawncc pawndisasm pawnruns $out/bin
+    cp libpawnc.so $out/lib/libpawnc.so
+    cp -r ../../include $out/include
   '';
 
   doCheck = false;
