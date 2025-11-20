@@ -3,12 +3,12 @@
 }:
 pkgs.multiStdenv.mkDerivation rec {
   pname = "pawncc";
-  version = "3.10.10";
+  version = "3.10.11";
   src = pkgs.fetchFromGitHub {
-    owner = "pawn-lang";
+    owner = "openmultiplayer";
     repo = "compiler";
     rev = "v${version}";
-    hash = "sha256-UBMfL7GwfVzU+bjCtALZEswoQ2sy1jC4evGORnLfqR8=";
+    hash = "sha256-voHp+e7aMh6tPJtKZIazgbvPrpJbgPVXraf3t/BP8DE=";
   };
 
   cmakeFlags = [
@@ -19,6 +19,7 @@ pkgs.multiStdenv.mkDerivation rec {
 
   nativeBuildInputs = with pkgs; [
     cmake
+    python314
   ];
 
   configurePhase = ''
